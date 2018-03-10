@@ -42,29 +42,31 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group">
-                    <% for(var i =0; i < usuario.length; i++){ %>            
+                    <% if(usuarios.length > 0){ %>
+                    <% usuarios.forEach(function(usuario){ %>            
                         <li class="list-group-item">
-                            <h4><%= usuario[i].nome %></h4>
-                            <!--<input type="hidden" id="id_usuario_<%= usuario[i]._id %>"name="usuario" value="<%= usuario[i]._id %>">-->
-                            <input type="button" value="Editar" class="btn btn-info" onclick="editarClick('<%= usuario[i]._id %>')">
-                            <input type="submit" value="Deletar" class="btn btn-danger" onclick="deleteUsuario('<%= usuario[i]._id %>')"></br>
-                            <div id="formulario_edit_<%= usuario[i]._id %>" class="container" style="display:none;margin-top:20px">
+                            <h4><%= usuario.nome %></h4>
+                            <!--<input type="hidden" id="id_usuario_<%= usuario._id %>"name="usuario" value="<%= usuario._id %>">-->
+                            <input type="button" value="Editar" class="btn btn-info" onclick="editarClick('<%= usuario._id %>')">
+                            <input type="submit" value="Deletar" class="btn btn-danger" onclick="deleteUsuario('<%= usuario._id %>')"></br>
+                            <div id="formulario_edit_<%= usuario._id %>" class="container" style="display:none;margin-top:20px">
                                 <div class="form-group">
                                     <h5><label class="badge">Nome </label></h5>
-                                    <input type="text" id="edit_nome_<%= usuario[i]._id %>" class="form-control" value ="<%= usuario[i].nome%>">
+                                    <input type="text" id="edit_nome_<%= usuario._id %>" class="form-control" value ="<%= usuario.nome%>">
                                 </div>
                                 <div class="form-group">
                                     <h5><label class="badge">E-mail </label></h5>
-                                    <input type="text" id="edit_email_<%= usuario[i]._id %>" class="form-control" value ="<%= usuario[i].email%>">
+                                    <input type="text" id="edit_email_<%= usuario._id %>" class="form-control" value ="<%= usuario.email%>">
                                 </div>
                                 <div class="form-group">
                                     <h5><label class="badge">Idade </label></h5>
-                                    <input type="text" id="edit_idade_<%= usuario[i]._id %>" class="form-control" value ="<%= usuario[i].idade%>">
+                                    <input type="text" id="edit_idade_<%= usuario._id %>" class="form-control" value ="<%= usuario.idade%>">
                                 </div>
 
-                                <input type="submit" class="btn btn-success" onclick="saveEdit('<%= usuario[i]._id %>')" value="Salvar">
+                                <input type="submit" class="btn btn-success" onclick="saveEdit('<%= usuario._id %>')" value="Salvar">
                             </div>
                         </li>            
+                    <% }) %>
                     <% } %>
                 </ul>
             </div>
