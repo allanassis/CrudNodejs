@@ -4,8 +4,8 @@ let mongoose = require('mongoose');
 let app = express();
 let db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost:27017/');
-
+//mongoose.connect('mongodb://localhost:27017/');
+mongoose.connect("mongodb://@ds231658.mlab.com:31658/nodeapplication")
 let port = process.env.PORT || 8080;
 
 app.use(express.static('public'));
@@ -25,6 +25,9 @@ let User = mongoose.model('user', userSchema);
 app.get('/', (req, res) => {
 
     User.find(function(err, data){
+        if(data == undefined){
+            res.render('index',{titulo: 'Estudo nodejs', usuario_nome : {}});    
+        }
         usuario = data;
         res.render('index',{titulo: 'Estudo nodejs', usuario_nome : usuario});
     })
